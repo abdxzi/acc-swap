@@ -83,7 +83,7 @@ function Swap() {
     }
 
     function handleSwap(){ 
-        contractCall.swapForExactTokens(amountIn, amountOut, tokenInfoOne, tokenInfoTwo, address, slippage);
+        contractCall.swapForExactTokens(amountIn, amountOut, tokenInfoOne, tokenInfoTwo, address, slippage, routerAddress);
     }
 
     // async function handleEstimate(){

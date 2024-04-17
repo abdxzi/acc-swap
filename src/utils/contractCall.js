@@ -6,7 +6,7 @@ import { ROUTER_ABI, ERC20 } from "./abis";
 import { TokenAmountHelper } from '../components/token/tokenAmount/tokenAmountHelper';
 
 // ccn: No hardcode allowed
-const routerAddress = "0xde97e76e0b2C044f9abe3DD3B23F37d6b6611301";
+// const routerAddress = "0xde97e76e0b2C044f9abe3DD3B23F37d6b6611301";
 
 export class ContractCall {
 
@@ -56,15 +56,12 @@ export class ContractCall {
     }
 
     // Function call for `swapExactTokensForTokens`
-    async swapForExactTokens(amountIn, amountOut, token1, token2, to, slippage) {
+    async swapForExactTokens(amountIn, amountOut, token1, token2, to, slippage, routerAddress) {
 
         const deadline = Math.floor(Date.now() / 1000) + 60 * 20; // 20 minutes
         const allowedAmount = await this.allowanceERC20(token1.address, to, routerAddress);
 
-        // console.log(allowedAmount > amountIn);
-
         if (allowedAmount < amountIn) {
-            // console.log("Need approval");
             await this.approveERC20(token1.address, routerAddress, amountIn);
         }
 
