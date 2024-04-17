@@ -1,0 +1,9 @@
+.tokenBalance {
+    display: inline-block;
+    position: absolute;
+    right: 2em;
+    bottom: 1em;
+    /* background-color: aqua; */
+    z-index: 999;
+    font-size: x-small;
+}
