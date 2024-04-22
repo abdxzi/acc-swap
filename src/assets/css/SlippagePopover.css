@@ -1,0 +1,38 @@
+.ant-popover-arrow {
+    visibility: hidden;
+  }
+  
+  .ant-popover-title {
+    color: white !important;
+  }
+  
+  .ant-popover-inner-content {
+    color: white !important;
+  }
+  
+  .ant-popover-inner {
+    min-width: 260px !important;
+    min-height: 140px !important;
+    border: 1px solid #21273a;
+    background-color: #0e111b !important;
+  }
+  
+  .ant-radio-group {
+    margin-top: 10px;
+  }
+  
+  .ant-radio-button-wrapper {
+    background-color: #1f2639 !important;
+    color: white !important;
+    font-weight: 500;
+    border-color: white !important;
+  }
+  
+  .ant-radio-button-wrapper-checked {
+    border-color: white !important;
+    background-color: #363e54 !important;
+  }
+  
+  .ant-radio-button-wrapper-checked::before {
+    background-color: white !important;
+  }

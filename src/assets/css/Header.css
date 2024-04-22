@@ -1,13 +1,39 @@
 header {
-    height: 100px;
+    width: 100vw;
+    /* background-color: green; */
+
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
+    padding: 1.5rem 1.5rem;
+}
+
+.connectionStatus button{
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 8px;
+    color: #fff;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+
+    margin: 0px 10px;
+    /* position: absolute; */
+}
+
+.walletData {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
-    padding-left: 50px;
-    padding-right: 50px;
-  }
-  
-  .logo{
-    height: 60px;
-    padding-right: 20px;
-  }
+}
+.walletData img{
+    height: 20px;
+    margin-right: 10px;
+}
+
+.connectionStatus button:hover{
+    border: 1px solid #007ec6;
+}
+
+/* .walletData img{
+    height: 20px;
+} */

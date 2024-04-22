@@ -1,15 +1,69 @@
+.ant-modal {
+    /* border: 1px solid #363e54; */
+    outline: solid 2px #363e54;
+    width: 400px !important;
+    border-radius: 10px;
+    background-color: #0e111b !important;
+    /* Removes the footerlike part */
+    padding-bottom: 10px !important;
+}
+
+
+.ant-modal-content {
+    background-color: transparent !important;
+    color: white !important;
+    padding: 0px !important;
+    /* height: 60vh; */
+    /* overflow: hidden; */
+
+}
+
+.ant-modal-header {
+    background-color: transparent !important;
+    /* background-color: #0e111b !important; */
+}
+
+
+.ant-modal-title {
+    color: white !important;
+    padding-top: 17px !important;
+    margin-left: 20px !important;
+}
+
+.ant-modal-close-icon {
+    color: #363e54 !important;
+    transition: 0.3s;
+}
+
+.ant-modal-close-icon:hover {
+    color: white !important;
+}
+
+.ant-modal-body {
+    height: 60vh;
+    overflow-y: scroll;
+}
+
+
 .modalContent {
-    border-top: 1px solid #363e54;
+    /* border-top: 1px solid #363e54; */
     /* padding-top: 20px; */
-    margin-top: 20px;
+    /* margin-top: 20px; */
     display: flex;
     flex-direction: column;
-    gap: 10px
+    gap: 10px;
+    /* background-color: aqua; */
+    /* overflow-y: scroll; */
+    /* overflow: hidden !important; */
+    /* overflow-y: scroll; */
+
 }
 
 .tokenLogo {
     height: 40px;
     width: 40px;
+    background-blend-mode: multiply;
+    border-radius: 10px;
 }
 
 .tokenChoice {
@@ -33,9 +87,30 @@
     font-weight: 500;
 }
 
-.tokenTicker {
+.tokenSymbol {
     margin-left: 10px;
     font-size: 13px;
     font-weight: 300;
     color: #51596f;
+}
+
+.ant-modal-body::-webkit-scrollbar {
+    width: 4px;
+}
+
+.ant-modal-body::-webkit-scrollbar-track {
+    background: #1f2639;
+    /* Optional: Add track color */
+}
+
+/* Handle */
+.ant-modal-body::-webkit-scrollbar-thumb {
+    background: #888;
+    /* Optional: Add scrollbar handle color */
+}
+
+/* Handle on hover */
+.ant-modal-body::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    /* Optional: Add hover color */
 }

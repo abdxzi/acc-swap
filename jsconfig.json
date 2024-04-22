@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+      "baseUrl": "./",
+      "paths": {
+        "@components/*": ["src/components/*"],
+        "@utils/*": ["src/utils/*"],
+        "@css/*": ["src/assets/css/*"],
+        "@config/*": ["src/config/*"],
+        "@assets/*": ["src/assets/*"]
+        // Add more aliases as needed
+      }
+    },
+    "exclude": ["node_modules", "dist"]
+  }

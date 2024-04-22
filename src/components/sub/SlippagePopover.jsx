@@ -2,6 +2,8 @@ import { Popover, Radio } from "antd";
 import { SettingOutlined } from "@ant-design/icons";
 import { useEffect } from "react";
 
+import "@css/SlippagePopover.css"
+
 function SlippagePopover({slippage, setSlippage}) {
 
     useEffect(()=>{
@@ -12,7 +14,7 @@ function SlippagePopover({slippage, setSlippage}) {
         setSlippage(e.target.value);
     }
 
-    console.log("Slippage: ", slippage);
+    // console.log("Slippage: ", slippage);
 
     const settings = (
         <>

@@ -1,28 +1,32 @@
 import { Modal } from "antd";
-import "../assets/css/TokenSelectionModal.css"
+import "@css/TokenSelectionModal.css"
 
-function TokenSelectionModal({ isModalOpen, setModalOpen, tokenInfoOne, setTokenInfoOne, tokenInfoTwo, setTokenInfoTwo, selectedToken, setInputTokenAmount, tokenList}) {
+
+function TokenSelectionModal({ swapState, tokenList}) {
+
+    // console.log("List: ", tokenList);
 
     function modifyToken(i) {
-        if (tokenList[i] !== tokenInfoOne && tokenList[i] !== tokenInfoTwo) {
+        if (tokenList[i] !== swapState.tokenInfoOne && tokenList[i] !== swapState.tokenInfoTwo) {
 
-            setInputTokenAmount(null);
+            swapState.setInputTokenAmount(null);
 
-            if (selectedToken === 1) {
-                setTokenInfoOne(tokenList[i]);
+            if (swapState.targetedTokenSelection === 1) {
+                swapState.setTokenInfoOne(tokenList[i]);
             } else {
-                setTokenInfoTwo(tokenList[i]);
+                swapState.setTokenInfoTwo(tokenList[i]);
             }
-            setModalOpen(false);
+            swapState.setIsOpen(false);
         }
     }
 
     return (
         <Modal
-            open={isModalOpen}
+            open={swapState.isOpen}
             footer={null}
-            onCancel={() => setModalOpen(false)}
+            onCancel={() => swapState.setIsOpen(false)}
             title="Select a token"
+            className="tokenModal"
         >
             <div className="modalContent">
                 {tokenList?.map((e, i) => {
@@ -32,10 +36,10 @@ function TokenSelectionModal({ isModalOpen, setModalOpen, tokenInfoOne, setToken
                             key={i}
                             onClick={() => modifyToken(i)}
                         >
-                            <img src={e.img} alt={e.ticker} className="tokenLogo" />
+                            <img src={e.logoURI} alt={e.symbol} className="tokenLogo" />
                             <div className="tokenChoiceNames">
                                 <div className="tokenName">{e.name}</div>
-                                <div className="tokenTicker">{e.ticker}</div>
+                                <div className="tokenSymbol">{e.symbol}</div>
                             </div>
                         </div>
                     );
