@@ -1,5 +1,5 @@
 import { modalConfig } from "./modalConfig";
-import { networks } from "./networks";
+import { networks } from "./modalNetworks";
 import { ethersConfig } from "./providerConfig";
 
 export {

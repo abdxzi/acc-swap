@@ -41,22 +41,31 @@
 
 .ant-modal-body {
     height: 60vh;
-    overflow-y: scroll;
+    overflow-y: hidden;
 }
 
 
 .modalContent {
-    /* border-top: 1px solid #363e54; */
-    /* padding-top: 20px; */
-    /* margin-top: 20px; */
     display: flex;
     flex-direction: column;
     gap: 10px;
-    /* background-color: aqua; */
-    /* overflow-y: scroll; */
-    /* overflow: hidden !important; */
-    /* overflow-y: scroll; */
+    flex-grow: 1;
+    overflow: hidden;
+}
 
+.coinListSeperator {
+    width: 100%;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.07);
+}
+
+.popularTokenHeader {
+    padding: 10px 15px;
+    color: rgba(255,255,255, 0.6);
+}
+.popularCoins {
+    overflow-y: scroll;
+    height: 160px;
 }
 
 .tokenLogo {
@@ -94,23 +103,23 @@
     color: #51596f;
 }
 
-.ant-modal-body::-webkit-scrollbar {
+*::-webkit-scrollbar {
     width: 4px;
 }
 
-.ant-modal-body::-webkit-scrollbar-track {
+*::-webkit-scrollbar-track {
     background: #1f2639;
     /* Optional: Add track color */
 }
 
 /* Handle */
-.ant-modal-body::-webkit-scrollbar-thumb {
+*::-webkit-scrollbar-thumb {
     background: #888;
     /* Optional: Add scrollbar handle color */
 }
 
 /* Handle on hover */
-.ant-modal-body::-webkit-scrollbar-thumb:hover {
+*::-webkit-scrollbar-thumb:hover {
     background: #555;
     /* Optional: Add hover color */
 }

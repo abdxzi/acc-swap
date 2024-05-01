@@ -1,17 +1,25 @@
 import App from "./App";
-import Swap from "./Swap";
 import Header from "./Header";
 import TokenSelectionModal from "./sub/TokenSelectionModal";
-import SwapForm from "./sub/SwapForm";
-import SlippagePopover from "./sub/SlippagePopover"
+import CoinBadge from "./sub/CoinBadge";
+import CoinBadgeList from "./sub/CoinBadgeList";
+import TokenSearchInput from "./sub/TokenSearchInput";
+import GasFeeData from "./sub/GasFeeData";
+import QuoteLoader from "./sub/QuoteLoader";
+import SlippagePopover from "./sub/SlippagePopover";
+import SwapLoader from "./sub/SwapLoader";
 import TokenBalance from "./sub/TokenBalance";
 
 export {
     App,
-    Swap,
     Header,
     TokenSelectionModal,
-    SwapForm,
+    CoinBadge,
+    CoinBadgeList,
+    TokenSearchInput,
+    GasFeeData,
+    QuoteLoader,
     SlippagePopover,
+    SwapLoader,
     TokenBalance
 }

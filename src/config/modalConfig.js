@@ -1,8 +1,11 @@
-import { networks } from "./networks";
+import { networks } from "./modalNetworks"
 import { ethersConfig, projectId } from "./providerConfig";
 
 export const modalConfig = {
     ethersConfig,
     chains: networks,
-    projectId
+    projectId,
+    enableAnalytics: false,
+    // termsConditionsUrl: 'https://www.mytermsandconditions.com',
+    // privacyPolicyUrl: 'https://www.myprivacypolicy.com',
 }

@@ -1,35 +1,31 @@
-import { ethers } from "ethers"
-import { createWeb3Modal, useWeb3ModalAccount, useWeb3ModalProvider } from '@web3modal/ethers5/react'
-import { message } from 'antd';
+import { createWeb3Modal } from '@web3modal/ethers5/react'
+import { Toaster } from 'react-hot-toast';
 
 // INTERNAL IMPORT
 import { modalConfig } from '@config'
-import { Header, Swap } from "."
 import { useWindowSize } from "@utils/resizeHook"
 
 import "@css/App.css"
+import {Header} from '@components/index';
+import { fetchTokenList } from '../utils/utils';
+import Swap from './Swap';
 
-createWeb3Modal(modalConfig)
+createWeb3Modal(modalConfig);
+
+// const testFcn = async () => {
+//   fetchTokenList(1);
+// }
 
 function App() {
-
-  const { address, chainId, isConnected } = useWeb3ModalAccount()
-  const { walletProvider } = useWeb3ModalProvider()
-
-  // const [messageApi, contextHolder] = message.useMessage();
-  
   const [width, height] = useWindowSize();
   
-
-  // const etherProvider = isConnected ? new ethers.providers.Web3Provider(walletProvider) : undefined;
-
   return (
     <>
-      {/* {contextHolder} */}
-      <div style={{position:"fixed", top:0, right:0}}>{width}</div>
+      {/* <div style={{position:"fixed", top:0, right:0}}>{width}</div> */}
+      <Toaster />
       <Header />
       <Swap />
-      {/* <w3m-connect-button /> */}
+      {/* <button onClick={testFcn}>Test</button> */}
     </>
   )
 }

@@ -1,0 +1,13 @@
+.badgeList {
+    width: 100%;
+    /* background-color: aqua; */
+    display: flex;
+    padding: 0px 20px;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin:8px 0px;
+}

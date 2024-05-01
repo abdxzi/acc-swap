@@ -1,0 +1,7 @@
+.amountOutLoader {
+    display: inline-block;
+    position: absolute;
+    left: 1em;
+    top: 50%;
+    transform: translate(0%, -50%);
+}

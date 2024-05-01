@@ -1,32 +1,33 @@
 import { useState, useEffect } from "react";
 import { Input, message } from "antd";
 import { ArrowDownOutlined, DownOutlined } from "@ant-design/icons";
-import { useWeb3ModalAccount } from "@web3modal/ethers5/react";
+import { useWeb3ModalAccount, useWeb3Modal } from "@web3modal/ethers5/react";
+
+import toast from 'react-hot-toast';
 
 // internal imports
-import { SlippagePopover, TokenBalance } from "@components/index";
+import { GasFeeData, QuoteLoader, SlippagePopover, SwapLoader, TokenBalance } from "@components/index";
 import { isInputANumber } from "@utils/utils";
-import { getQuote, approveTransaction, executeSwap } from "@utils/alphaRouter";
 import "@css/SwapForm.css"
+import { approveTransaction, executeTrade, fetchTrade } from "../../utils/utils";
+import { ERC20Fetch } from "../../utils/ERC20Fetch";
 
 
 function SwapForm({ swapState }) {
 
-    const { address, isConnected } = useWeb3ModalAccount()
-    const [messageApi, contextHolder] = message.useMessage();
+    const { address, isConnected, chainId } = useWeb3ModalAccount()
+    const { open } = useWeb3Modal()
 
     const [route, setRoute] = useState(null);
     const [swapStarted, setSwapStarted] = useState(false);
     const [amountout, setAmountOut] = useState(null);
     const [swapBtnContent, setSwapBtnContent] = useState('Swap');
     const [updateBalance, setUpdateBalance] = useState(false);
-
-    const msgApiKey = "Updatable";
-
+    const [isLoading, setIsLoading] = useState(false);
 
     function changeAmount(e) {
         setAmountOut(null);
-        
+        setIsLoading(false);
         if (isInputANumber(e.target.value)) {
             swapState.setInputTokenAmount(e.target.value);
         }
@@ -43,7 +44,7 @@ function SwapForm({ swapState }) {
         swapState.setTokenInfoTwo(one);
     }
 
-    function updateTokenBalance(){
+    function updateTokenBalance() {
         console.log("Updating token balance..")
         setUpdateBalance(!updateBalance);
     }
@@ -52,91 +53,87 @@ function SwapForm({ swapState }) {
         swapState.setTargetedTokenSelection(tokenSelection);
         swapState.setIsOpen(true);
     }
+    
+    // When slippage orchainID change reset form
+    useEffect(()=>{
+        setRoute(null);
+        setAmountOut(null);
+        swapState.setInputTokenAmount(null);
+        !isConnected ? setSwapBtnContent("Connect to Etheruem") : setSwapBtnContent("Swap")
+    }, [swapState.slippage, chainId])
 
-    async function handleSwap() {
-        setSwapStarted(true)
-        if(!route){
-            message.info("Wait till the route complete")
-            setSwapStarted(false)
-            return null;
+    // When input changed Call Uniswap AlphaRouter
+    useEffect(() => {
+        if(swapState.inputTokenAmount){
+            setIsLoading(true);
+            const trade = fetchTrade(
+                chainId,
+                swapState.tokenInfoOne.address, 
+                swapState.tokenInfoTwo.address,
+                swapState.slippage,
+                address,
+                swapState.inputTokenAmount
+            ).then(trade => {
+                if(trade.input.amount == swapState.inputTokenAmount){
+                    console.log(trade)
+                    setIsLoading(false)
+                    setAmountOut(trade.output.amount)
+                    setRoute(trade);
+                }
+            })
         }
+    }, [swapState.inputTokenAmount]);
+
+    const handleSwap = async ()=> {
+        setSwapStarted(true);
+        setSwapBtnContent("Processing ...");
+
+        //  connect if not connected
+        if(!chainId){
+            open({ view: 'Connect' });
+            return;
+        }
+
+        // routing process ongoing...
+        if(!route){
+            toast("Wait till routing complete.", {icon: "💬"})
+            setSwapStarted(false);
+            setSwapBtnContent("Swap");
+            return;
+        }
+
         try {
-            messageApi.open({
-                msgApiKey,
-                type: 'loading',
-                content: 'Approving Transaction.',
-                // duration: 0,
-            });
+            const signer = await swapState.provider.getSigner();
+            toast("Approving transaction.", {icon: "🕖"})
             const approval = await approveTransaction(swapState.provider, route);
-            if(!approval){
-                throw Error("Approval Failed !")
-            }
-            
-            message.destroy(msgApiKey);
-            messageApi.open({
-                msgApiKey,
-                type: 'loading',
-                content: 'Executing Swap.',
-                // duration: 0
-            });
+            if(!approval) throw Error("Approval Failed !");
 
-            const rec = await executeSwap(swapState.provider, route);
+            toast("Executing Swap", {icon: "🕖"});
+            const response = await executeTrade(swapState.provider, route);
 
-            if(rec){
-                messageApi.open({
-                    msgApiKey,
-                    type: 'success',
-                    content: 'Swap success.',
-                });
-
+            if(response){
+                toast.success("Swap success");
                 updateTokenBalance();
             } else {
                 throw Error("Swap Failed.")
             }
-        } catch (e) {
-
-            console.log(e);
-            messageApi.open({
-                msgApiKey,
-                type: 'error',
-                content: 'Something went wrong.',
-            });
+        } catch(e) {
+            setSwapBtnContent("Swap");
+            toast.error("Something went wrong !")
+            console.log(e)
         } finally {
-            console.log("Finally")
+            setSwapBtnContent("Swap")
             updateTokenBalance();
             setRoute(null);
             setSwapStarted(false)
             swapState.setInputTokenAmount(null);
             setAmountOut(null)
-            // upadate balances 
         }
+
     }
-
-    async function getRoute() {
-        setRoute(null);
-        if (swapState.inputTokenAmount) {
-            const _route = await getQuote(
-                swapState.provider,
-                swapState.tokenInfoOne,
-                swapState.tokenInfoTwo,
-                swapState.inputTokenAmount
-            );
-
-            setRoute(_route);
-            setAmountOut(_route.quote.toSignificant(6));
-        }
-    }
-
-    // When input changed Call Uniswap AlphaRouter
-    useEffect(() => {
-        getRoute();
-    }, [swapState.inputTokenAmount])
-
-    // const inputTwoUI = 
 
     return (
         <div className="swapForm">
-            {contextHolder}
             <div className="swapFormHeader">
                 <h4>Swap</h4>
                 <SlippagePopover slippage={swapState.slippage} setSlippage={swapState.setSlippage} />
@@ -145,13 +142,16 @@ function SwapForm({ swapState }) {
             <div className="swapFormInputs">
 
                 <div className="inputOneContainer">
-                    <Input placeholder="0" value={swapState.inputTokenAmount} onChange={changeAmount} disabled={swapStarted} />
+                    <Input placeholder="0" value={swapState.inputTokenAmount} onChange={changeAmount} disabled={swapStarted || !isConnected} />
                     {isConnected && address && <TokenBalance swapState={swapState} address={address} update={updateBalance} />}
                 </div>
 
-                <Input placeholder="0" value={swapState.inputTokenAmount ? (amountout ? amountout : "...") : null} disabled={true} />
+                <div className="inputTwoContainer">
+                    <Input placeholder={isLoading && swapState.inputTokenAmount ? "" : "0"} value={swapState.inputTokenAmount ? (amountout ? amountout : null) : null} disabled={true} />
+                    {isLoading && swapState.inputTokenAmount && <QuoteLoader />}
+                </div>
 
-                <div className="switchButton" onClick={switchTokens} >
+                <div className="switchButton" onClick={!swapStarted ? switchTokens : null} >
                     <ArrowDownOutlined className="switchArrow" />
                 </div>
 
@@ -168,8 +168,14 @@ function SwapForm({ swapState }) {
                 </div>
             </div>
 
-            <button className="swapButton" disabled={!swapState.inputTokenAmount || swapStarted} onClick={handleSwap}>{swapBtnContent}</button>
+            <div className="swapBtnContainer">
+                <button className="swapButton" disabled={(!swapState.inputTokenAmount || swapStarted) && isConnected} onClick={handleSwap}>
+                    {swapStarted && <SwapLoader />}
+                    {swapBtnContent}
+                </button>
+            </div>
 
+            {route && <GasFeeData route={route} slippage={swapState.slippage}/>}
         </div>
     );
 }

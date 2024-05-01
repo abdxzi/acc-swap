@@ -1,0 +1,20 @@
+.coinBadge {
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 18px;
+    display: flex;
+    padding: 5px 12px 5px 6px;
+    line-height: 0px;
+    -webkit-box-align: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.coinBadge img {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
+
+.coinBadge span {
+    margin-left: 6px;
+}

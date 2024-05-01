@@ -5,6 +5,8 @@ export class TokenAmountHelper {
     static convertToBigIntString(amount, decimals) {
         // amount:String "2", decimals:Number
 
+        console.log(amount, decimals)
+
         if (!amount || !decimals) throw Error("Error::convertToBigIntString from TokenAmountHelper");
         const parsedAmount = parseFloat(amount);
         const adjustedAmount = parsedAmount * Math.pow(10, decimals);

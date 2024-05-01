@@ -1,8 +1,33 @@
 [
     {
-        "chainId": 123,
-        "name": "",
-        "swapRouter": "",
-        "logoUrI": ""
+        "chainId": 1,
+        "name": "Ethereum",
+        "symbol": "ETH",
+        "swapRouter": "0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45",
+        "universalRouter":"0x3fC91A3afd70395Cd496C647d5a6CC9D4B2b7FAD",
+        "imageURI": "https://assets.coingecko.com/coins/images/279/standard/ethereum.png?1696501628"
+    },
+    {
+        "chainId": 11155111,
+        "name": "Sepolia",
+        "symbol": "ETH",
+        "swapRouter": "0x3bFA4769FB09eefC5a80d6E87c3B9C650f7Ae48E",
+        "universalRouter":"0x3fC91A3afd70395Cd496C647d5a6CC9D4B2b7FAD",
+        "imageURI": "https://assets.coingecko.com/coins/images/279/standard/ethereum.png?1696501628"
+    },
+    {
+        "chainId": 80002,
+        "name": "Polygon Amoy",
+        "symbol": "MATIC",
+        "swapRouter": null,
+        "imageURI": "https://assets.coingecko.com/coins/images/4713/standard/polygon.png?1698233745"
+    },
+    {
+        "chainId": 42161,
+        "name": "Arbitrum One",
+        "symbol": "ETH",
+        "swapRouter": "0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45",
+        "universalRouter":"0x5E325eDA8064b456f4781070C0738d849c824258",
+        "imageURI": "https://assets.coingecko.com/coins/images/16547/standard/photo_2023-03-29_21.47.00.jpeg?1696516109"
     }
 ]

@@ -1,0 +1,26 @@
+.tokenSearchInput {
+    width: 100%;
+    padding: 0px 20px;
+    padding-top: 10px;
+}
+
+.tokenSearchInput input{
+    /* background: url("https://app.uniswap.org/static/media/search.3d4b96e3a9ccded7bfd728a818c83611.svg") 12px center / 20px 20px no-repeat scroll rgb(27, 27, 27); */
+    background: url("https://app.uniswap.org/static/media/search.3d4b96e3a9ccded7bfd728a818c83611.svg") 12px center / 20px 20px no-repeat scroll rgba(27, 27, 27, 0.126);
+    position: relative;
+    display: flex;
+    padding: 16px 16px 16px 40px;
+    height: 40px;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 100%;
+    white-space: nowrap;
+    outline: none;
+    border-radius: 12px;
+    color: rgb(255, 255, 255);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    appearance: none;
+    font-weight: 485;
+    font-size: 16px;
+    transition: border 100ms ease 0s;
+}

@@ -131,6 +131,7 @@
   background-color: #243056;
   opacity: 0.4;
   color: #5982f39b;
+  width: 100%;
 }
 
 .swapButton[disabled]:hover {
@@ -143,6 +144,7 @@
   background-color: #3b4874
 }
 
-.inputOneContainer {
+.inputOneContainer, .inputTwoContainer, .swapBtnContainer {
   position: relative;
+  width: 100%;
 }

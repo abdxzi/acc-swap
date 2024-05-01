@@ -1,5 +1,5 @@
 {
-  "name": "routing",
+  "name": "web-ui",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -11,16 +11,14 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.3.6",
-    "@uniswap/sdk": "^3.0.3",
-    "@uniswap/sdk-core": "^4.2.0",
-    "@uniswap/smart-order-router": "^3.28.4",
-    "@uniswap/v3-sdk": "^3.11.0",
-    "@web3modal/ethers5": "^4.1.9",
-    "antd": "^5.16.2",
+    "@web3modal/ethers5": "^4.1.11",
+    "antd": "^5.16.5",
+    "axios": "^1.6.8",
     "ethers": "5.7",
-    "jsbi": "3.2.5",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-hot-toast": "^2.4.1",
+    "react-spinners": "^0.13.8"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",

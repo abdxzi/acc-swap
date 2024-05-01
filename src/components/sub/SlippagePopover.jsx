@@ -21,9 +21,9 @@ function SlippagePopover({slippage, setSlippage}) {
             <div>Slippage Tolerance</div>
             <div>
                 <Radio.Group value={slippage} onChange={handleSlippageChange}>
-                    <Radio.Button value={0.5} defaultChecked={true}>0.5%</Radio.Button>
-                    <Radio.Button value={2.5}>2.5%</Radio.Button>
-                    <Radio.Button value={5}>5.0%</Radio.Button>
+                    <Radio.Button value={2} defaultChecked={true}>2%</Radio.Button>
+                    <Radio.Button value={3}>3%</Radio.Button>
+                    <Radio.Button value={5}>5%</Radio.Button>
                 </Radio.Group>
             </div>
         </>

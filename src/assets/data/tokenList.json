@@ -9158,6 +9158,30 @@
         "decimals": 18,
         "chainId": 11155111,
         "logoURI": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+      },
+      {
+        "name": "Wrapped ACME",
+        "address": "0x336713c91E5991a2aDB8aa3e1e2c5B4B26e3CEca",
+        "symbol": "WACME",
+        "decimals": 18,
+        "chainId": 80002,
+        "logoURI": "https://assets.coingecko.com/coins/images/27207/standard/accumulate-logo-200x200.png?1696526255"
+      },
+      {
+        "name": "Tether",
+        "address": "0x0C677bbCB7D8080AbE0fA82AD7990bc718dC5027",
+        "symbol": "USDT",
+        "decimals": 18,
+        "chainId": 80002,
+        "logoURI": "https://assets.coingecko.com/coins/images/325/standard/Tether.png?1696501661"
+      },
+      {
+        "name": "Wrapped Ether",
+        "address": "0x09a72bcb85a90eAB9A0748656f82cA39567A77f1",
+        "symbol": "WETH",
+        "decimals": 18,
+        "chainId": 80002,
+        "logoURI": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
       }
     ]
   }

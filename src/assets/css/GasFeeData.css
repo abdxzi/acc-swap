@@ -1,0 +1,86 @@
+.ant-collapse {
+    border: none !important;
+    /* background-color: aquamarine; */
+    width: 100%;
+}
+
+.ant-collapse-item {
+    border: none !important;
+}
+
+.ant-collapse-header {
+    color: #fff !important;
+    padding: 0px !important;
+    cursor: pointer;
+}
+
+.ant-collapse-content {
+    background-color: transparent !important;
+    color: #fff !important;
+    border: none !important;
+}
+
+.ant-collapse-content-box {
+    padding: 15px 0px !important;
+}
+.gasFeeHeader {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+}
+.gasFeeHeaderFeeData {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-right: 10px;
+    color: rgb(155, 155, 155);
+    letter-spacing: -0.01em;
+}
+
+/* .gasFeeHeaderFeeData .arrowDown {
+    color: rgb(155, 155, 155);
+} */
+
+.gasFeeHeaderFeeData svg, .gasFee svg{
+    width: 20px;
+    height: 20px;
+}
+.gasFeeHeaderFeeData svg path, .gasFee svg path {
+    fill: #1f2639;
+}
+
+.gasFeeHeader .anticon-down {
+    width: 15px;
+    transition: 0.1s linear;
+}
+
+.ant-collapse-item-active svg {
+    display: hidden;
+}
+
+.ant-collapse-item-active .anticon-down{
+    transform: rotate(180deg);
+}
+
+.gasFeeContentItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.gasFeeContentItem .gasFee {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.ant-collapse-item-active .gasFeeHeaderFeeData {
+    display: none;
+}
+
+.gasFeeContentItem div:first-child{
+    color: rgb(155, 155, 155);
+}

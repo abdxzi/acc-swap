@@ -21,7 +21,7 @@ const sepolia = {
     name: 'Sepolia',
     currency: 'ETH',
     explorerUrl: 'https://sepolia.etherscan.io',
-    rpcUrl: 'https://eth-sepolia.g.alchemy.com/v2/demo'
+    rpcUrl: 'https://rpc-sepolia.rockx.com'
 }
 
 // const ganache = {
