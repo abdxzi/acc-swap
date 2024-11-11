@@ -3,7 +3,8 @@ import { useWalletInfo, useWeb3Modal, useWeb3ModalAccount, useWeb3ModalProvider 
 
 import { networkData } from "@assets/data";
 import { getCurrentNetworkData, getNetworkBalance, shortenAddress } from "@utils/utils";
-import AccumulateLogo from "@assets/images/accumulate_logo.jpeg";
+// import AccumulateLogo from "@assets/images/accumulate_logo.jpeg";
+import Logo from "@assets/images/mobile_logo.svg";
 import "@css/Header.css"
 
 function Header() {
@@ -37,7 +38,7 @@ function Header() {
     return (
         <header>
             <div className="logo">
-                <img src={AccumulateLogo} alt="AccumulateSwap" />
+                <img src={Logo} alt="AccumulateSwap" />
             </div>
             <div className="connectionStatus">
                 {
